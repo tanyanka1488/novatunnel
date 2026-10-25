@@ -1,0 +1,242 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b0b12">
+<title>NovaTunnel</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #0b0b12;
+  color: #f8f7ff;
+  font-family: -apple-system, Arial, sans-serif;
+}
+
+header {
+  padding: 22px;
+  border-bottom: 1px solid #302b40;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+header span {
+  color: #a78bfa;
+}
+
+main {
+  max-width: 650px;
+  margin: auto;
+  padding: 35px 20px;
+}
+
+h1 {
+  font-size: clamp(42px, 10vw, 65px);
+  line-height: 1.05;
+  letter-spacing: -2px;
+}
+
+.gradient {
+  background: linear-gradient(90deg, #c4b5fd, #5eead4);
+  color: transparent;
+  background-clip: text;
+}
+
+p {
+  color: #aaa6bd;
+  line-height: 1.7;
+}
+
+.panel {
+  margin-top: 30px;
+  padding: 22px;
+  background: #15141f;
+  border: 1px solid #302b40;
+  border-radius: 22px;
+}
+
+label {
+  display: block;
+  margin: 15px 0 8px;
+  font-size: 12px;
+  color: #aaa6bd;
+}
+
+select, input, button {
+  width: 100%;
+  padding: 15px;
+  border-radius: 12px;
+  font-size: 16px;
+}
+
+select, input {
+  background: #211e30;
+  color: white;
+  border: 1px solid #403951;
+}
+
+button {
+  margin-top: 16px;
+  border: none;
+  background: linear-gradient(100deg, #a78bfa, #5eead4);
+  color: #10101a;
+  font-weight: bold;
+}
+
+.status {
+  margin-top: 18px;
+  font-size: 13px;
+  color: #c4b5fd;
+  overflow-wrap: anywhere;
+}
+
+.small {
+  font-size: 12px;
+  color: #89839e;
+}
+
+.features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.feature {
+  padding: 16px;
+  background: #15141f;
+  border: 1px solid #302b40;
+  border-radius: 15px;
+}
+
+.feature p {
+  font-size: 12px;
+}
+
+footer {
+  padding: 25px;
+  text-align: center;
+  color: #827d96;
+  font-size: 12px;
+}
+
+@media (max-width: 400px) {
+  .features {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  Nova<span>Tunnel</span>
+</header>
+
+<main>
+  <p>✦ ТВОЙ ИНТЕРНЕТ. ТВОЙ ВЫБОР.</p>
+
+  <h1>
+    Интернет<br>
+    <span class="gradient">без границ.</span>
+  </h1>
+
+  <p>
+    NovaTunnel — VPN-проект для iPhone, Android
+    и компьютеров.
+  </p>
+
+  <section class="panel">
+    <h2>Твоя подписка</h2>
+
+    <label for="country">ВЫБЕРИ СТРАНУ</label>
+
+    <select id="country">
+      <option value="Germany">🇩🇪 Германия</option>
+      <option value="Netherlands">🇳🇱 Нидерланды</option>
+      <option value="Finland">🇫🇮 Финляндия</option>
+      <option value="France">🇫🇷 Франция</option>
+      <option value="Portugal">🇵🇹 Португалия</option>
+      <option value="Turkey">🇹🇷 Турция</option>
+      <option value="USA">🇺🇸 США</option>
+      <option value="Russia">🇷🇺 Россия</option>
+    </select>
+
+    <label for="code">КОД ПОДПИСКИ</label>
+
+    <input
+      id="code"
+      placeholder="Вставь код подписки"
+      autocomplete="off"
+    >
+
+    <button id="activate">
+      Проверить код ↗
+    </button>
+
+    <div class="status" id="status" aria-live="polite">
+      ● VPN-сервер не настроен
+    </div>
+
+    <p class="small">
+      Демо-версия. Настоящее VPN-подключение
+      появится после настройки серверов.
+    </p>
+  </section>
+
+  <div class="features">
+    <div class="feature">
+      <b>📱 iPhone</b>
+      <p>Интерфейс для iOS</p>
+    </div>
+
+    <div class="feature">
+      <b>🤖 Android</b>
+      <p>Интерфейс для Android</p>
+    </div>
+
+    <div class="feature">
+      <b>🌍 8 стран</b>
+      <p>Выбор желаемой локации</p>
+    </div>
+
+    <div class="feature">
+      <b>🔐 Приватность</b>
+      <p>Цель проекта — безопасное соединение</p>
+    </div>
+  </div>
+</main>
+
+<footer>
+  NovaTunnel © 2026
+</footer>
+
+<script>
+const activateButton = document.getElementById("activate");
+const country = document.getElementById("country");
+const code = document.getElementById("code");
+const status = document.getElementById("status");
+
+activateButton.addEventListener("click", function () {
+  if (!code.value.trim()) {
+    status.textContent = "Введи код подписки.";
+    return;
+  }
+
+  status.textContent =
+    "Демо: код введён. Сервер " +
+    country.options[country.selectedIndex].text +
+    " пока не настроен.";
+});
+</script>
+
+</body>
+</html>
+
