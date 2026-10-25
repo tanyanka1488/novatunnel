@@ -4,239 +4,408 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#0b0b12">
-<title>NovaTunnel</title>
-
+<meta name="theme-color" content="#090911">
+<title>NovaTunnel — Internet, reimagined</title>
 <style>
-* {
-  box-sizing: border-box;
+:root {
+  --bg:#090911;
+  --panel:#131320;
+  --border:#29283c;
+  --muted:#a5a3bb;
+  --purple:#b8a0ff;
+  --mint:#72f5d0;
 }
-
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
 body {
-  margin: 0;
-  background: #0b0b12;
-  color: #f8f7ff;
-  font-family: -apple-system, Arial, sans-serif;
+  margin:0;
+  background:var(--bg);
+  color:#faf9ff;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 }
-
 header {
-  padding: 22px;
-  border-bottom: 1px solid #302b40;
-  font-size: 24px;
-  font-weight: 800;
+  height:76px;
+  padding:0 6%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom:1px solid #222134;
 }
-
-header span {
-  color: #a78bfa;
+.logo {
+  font-size:23px;
+  font-weight:850;
+  letter-spacing:-1px;
 }
-
-main {
-  max-width: 650px;
-  margin: auto;
-  padding: 35px 20px;
+.logo span { color:var(--purple); }
+.nav {
+  color:var(--muted);
+  font-size:13px;
 }
-
+.hero {
+  max-width:1080px;
+  margin:auto;
+  padding:80px 22px 48px;
+  text-align:center;
+}
+.badge {
+  display:inline-block;
+  padding:9px 14px;
+  border:1px solid #39314f;
+  border-radius:30px;
+  color:var(--purple);
+  font-size:12px;
+  background:#151222;
+}
 h1 {
-  font-size: clamp(42px, 10vw, 65px);
-  line-height: 1.05;
-  letter-spacing: -2px;
+  font-size:clamp(43px,9vw,83px);
+  line-height:1.02;
+  letter-spacing:-3px;
+  margin:25px 0 20px;
 }
-
 .gradient {
-  background: linear-gradient(90deg, #c4b5fd, #5eead4);
-  color: transparent;
-  background-clip: text;
+  color:transparent;
+  background:linear-gradient(95deg,#c5b3ff,#72f5d0);
+  background-clip:text;
 }
-
-p {
-  color: #aaa6bd;
-  line-height: 1.7;
+.hero p {
+  max-width:540px;
+  margin:0 auto;
+  color:var(--muted);
+  line-height:1.8;
 }
-
-.panel {
-  margin-top: 30px;
-  padding: 22px;
-  background: #15141f;
-  border: 1px solid #302b40;
-  border-radius: 22px;
+.actions {
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  margin-top:27px;
+  flex-wrap:wrap;
 }
-
+.btn {
+  padding:14px 20px;
+  border-radius:13px;
+  text-decoration:none;
+  font-size:14px;
+  font-weight:750;
+  cursor:pointer;
+  border:1px solid var(--border);
+}
+.primary {
+  color:#101018;
+  background:linear-gradient(100deg,#c0a9ff,#72f5d0);
+  border:0;
+}
+.secondary {
+  background:#171624;
+  color:white;
+}
+section.content {
+  max-width:980px;
+  margin:auto;
+  padding:25px 20px 65px;
+}
+.section-title {
+  font-size:25px;
+  letter-spacing:-.7px;
+  margin:0 0 8px;
+}
+.sub {
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.7;
+  margin:0 0 23px;
+}
+.card {
+  background:linear-gradient(145deg,#171625,#101019);
+  border:1px solid var(--border);
+  border-radius:22px;
+  padding:24px;
+}
+.countries {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+}
+.country {
+  text-align:left;
+  background:#171624;
+  border:1px solid #302e43;
+  border-radius:15px;
+  padding:16px 12px;
+  color:white;
+  cursor:pointer;
+  min-width:0;
+}
+.country.active {
+  border-color:var(--purple);
+  background:#211c35;
+  box-shadow:0 0 0 1px #b8a0ff22;
+}
+.flag { display:block;font-size:25px;margin-bottom:10px; }
+.country-name { font-size:13px;font-weight:700; }
+.country-state { display:block;color:#9692ac;font-size:10px;margin-top:6px; }
+.grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:17px;
+  margin-top:18px;
+}
 label {
-  display: block;
-  margin: 15px 0 8px;
-  font-size: 12px;
-  color: #aaa6bd;
+  display:block;
+  font-size:12px;
+  color:var(--muted);
+  margin:17px 0 9px;
 }
-
-select, input, button {
-  width: 100%;
-  padding: 15px;
-  border-radius: 12px;
-  font-size: 16px;
+input,select {
+  width:100%;
+  padding:14px;
+  border-radius:12px;
+  border:1px solid #39364f;
+  background:#0d0d17;
+  color:white;
+  font-size:15px;
 }
-
-select, input {
-  background: #211e30;
-  color: white;
-  border: 1px solid #403951;
+button.full { width:100%;margin-top:14px; }
+.message {
+  display:none;
+  margin-top:14px;
+  padding:13px;
+  border-radius:12px;
+  background:#211c35;
+  color:#d7ccff;
+  font-size:13px;
+  line-height:1.6;
+  overflow-wrap:anywhere;
 }
-
-button {
-  margin-top: 16px;
-  border: none;
-  background: linear-gradient(100deg, #a78bfa, #5eead4);
-  color: #10101a;
-  font-weight: bold;
+.prices {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
 }
-
-.status {
-  margin-top: 18px;
-  font-size: 13px;
-  color: #c4b5fd;
-  overflow-wrap: anywhere;
+.price-card {
+  background:#131320;
+  border:1px solid var(--border);
+  border-radius:19px;
+  padding:19px;
 }
-
-.small {
-  font-size: 12px;
-  color: #89839e;
+.price-card.featured { border-color:#8e7bc7; }
+.price-card h3 { margin:0 0 12px;font-size:15px; }
+.price {
+  font-size:28px;
+  font-weight:850;
+  letter-spacing:-1px;
 }
-
-.features {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin-top: 20px;
+.price small { font-size:12px;color:var(--muted);font-weight:400; }
+.price-card p {
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.7;
+  min-height:50px;
 }
-
-.feature {
-  padding: 16px;
-  background: #15141f;
-  border: 1px solid #302b40;
-  border-radius: 15px;
+.price-card button { width:100%; }
+.info {
+  color:#a6a0bd;
+  font-size:12px;
+  line-height:1.8;
+  margin-top:20px;
 }
-
-.feature p {
-  font-size: 12px;
-}
-
 footer {
-  padding: 25px;
-  text-align: center;
-  color: #827d96;
-  font-size: 12px;
+  text-align:center;
+  border-top:1px solid #242236;
+  padding:27px 18px;
+  color:#89859e;
+  font-size:12px;
+  line-height:1.8;
 }
-
-@media (max-width: 400px) {
-  .features {
-    grid-template-columns: 1fr;
-  }
+@media(max-width:650px) {
+  header { height:66px;padding:0 18px; }
+  .nav { font-size:11px; }
+  .hero { padding:58px 19px 32px; }
+  h1 { letter-spacing:-2px; }
+  section.content { padding:20px 15px 45px; }
+  .countries { grid-template-columns:repeat(2,1fr); }
+  .grid { grid-template-columns:1fr; }
+  .prices { grid-template-columns:1fr; }
+  .price-card p { min-height:0; }
+  .card { padding:18px; }
 }
 </style>
 </head>
-
 <body>
 
 <header>
-  Nova<span>Tunnel</span>
+  <div class="logo">Nova<span>Tunnel</span></div>
+  <div class="nav">PRIVATE INTERNET · YOUR CHOICE</div>
 </header>
 
-<main>
-  <p>✦ ТВОЙ ИНТЕРНЕТ. ТВОЙ ВЫБОР.</p>
-
-  <h1>
-    Интернет<br>
-    <span class="gradient">без границ.</span>
-  </h1>
-
+<div class="hero">
+  <div class="badge">✦ YOUR DIGITAL SPACE</div>
+  <h1>Твой интернет.<br><span class="gradient">Твои правила.</span></h1>
   <p>
-    NovaTunnel — VPN-проект для iPhone, Android
-    и компьютеров.
+    Один проект для разных устройств.
+    Выбирай нужную локацию и управляй доступом
+    через совместимый VPN-клиент.
   </p>
+  <div class="actions">
+    <a href="#servers" class="btn primary">Выбрать сервер ↗</a>
+    <a href="#plans" class="btn secondary">Тарифы</a>
+  </div>
+</div>
 
-  <section class="panel">
-    <h2>Твоя подписка</h2>
+<section class="content" id="servers">
+  <h2 class="section-title">Выбери свою локацию</h2>
+  <p class="sub">Выбери страну, чтобы увидеть её в настройках.</p>
 
-    <label for="country">ВЫБЕРИ СТРАНУ</label>
+  <div class="card">
+    <div class="countries" id="countries">
+      <button class="country active" data-name="Германия">
+        <span class="flag">🇩🇪</span>
+        <span class="country-name">Германия</span>
+        <span class="country-state">Выбрана локация</span>
+      </button>
+      <button class="country" data-name="Нидерланды">
+        <span class="flag">🇳🇱</span>
+        <span class="country-name">Нидерланды</span>
+        <span class="country-state">Выбрать</span>
+      </button>
+      <button class="country" data-name="Финляндия">
+        <span class="flag">🇫🇮</span>
+        <span class="country-name">Финляндия</span>
+        <span class="country-state">Выбрать</span>
+      </button>
+      <button class="country" data-name="Франция">
+        <span class="flag">🇫🇷</span>
+        <span class="country-name">Франция</span>
+        <span class="country-state">Выбрать</span>
+      </button>
+      <button class="country" data-name="Португалия">
+        <span class="flag">🇵🇹</span>
+        <span class="country-name">Португалия</span>
+        <span class="country-state">Выбрать</span>
+      </button>
+      <button class="country" data-name="Турция">
+        <span class="flag">🇹🇷</span>
+        <span class="country-name">Турция</span>
+        <span class="country-state">Выбрать</span>
+      </button>
+      <button class="country" data-name="США">
+        <span class="flag">🇺🇸</span>
+        <span class="country-name">США</span>
+        <span class="country-state">Выбрать</span>
+      </button>
+      <button class="country" data-name="Россия">
+        <span class="flag">🇷🇺</span>
+        <span class="country-name">Россия</span>
+        <span class="country-state">Выбрать</span>
+      </button>
+    </div>
 
-    <select id="country">
-      <option value="Germany">🇩🇪 Германия</option>
-      <option value="Netherlands">🇳🇱 Нидерланды</option>
-      <option value="Finland">🇫🇮 Финляндия</option>
-      <option value="France">🇫🇷 Франция</option>
-      <option value="Portugal">🇵🇹 Португалия</option>
-      <option value="Turkey">🇹🇷 Турция</option>
-      <option value="USA">🇺🇸 США</option>
-      <option value="Russia">🇷🇺 Россия</option>
-    </select>
+    <div class="grid">
+      <div>
+        <label for="chosen">ВЫБРАННАЯ СТРАНА</label>
+        <input id="chosen" value="Германия" readonly>
+      </div>
+      <div>
+        <label for="device">ТВОЁ УСТРОЙСТВО</label>
+        <select id="device">
+          <option>iPhone / iPad</option>
+          <option>Android</option>
+          <option>Windows</option>
+          <option>Mac</option>
+        </select>
+      </div>
+    </div>
 
     <label for="code">КОД ПОДПИСКИ</label>
-
-    <input
-      id="code"
-      placeholder="Вставь код подписки"
-      autocomplete="off"
-    >
-
-    <button id="activate">
-      Проверить код ↗
-    </button>
-
-    <div class="status" id="status" aria-live="polite">
-      ● VPN-сервер не настроен
-    </div>
-
-    <p class="small">
-      Демо-версия. Настоящее VPN-подключение
-      появится после настройки серверов.
+    <input id="code" placeholder="Вставь свой код сюда" autocomplete="off">
+    <button class="btn primary full" id="activate">Проверить код ↗</button>
+    <div class="message" id="message" aria-live="polite"></div>
+    <p class="info">
+      Сейчас это демонстрационный интерфейс. Реальные серверы,
+      выдача подписок Happ и проверка оплаты ещё не подключены.
     </p>
-  </section>
+  </div>
+</section>
 
-  <div class="features">
-    <div class="feature">
-      <b>📱 iPhone</b>
-      <p>Интерфейс для iOS</p>
+<section class="content" id="plans">
+  <h2 class="section-title">Тарифы</h2>
+  <p class="sub">Макет будущих планов подписки.</p>
+
+  <div class="prices">
+    <div class="price-card">
+      <h3>Monthly</h3>
+      <div class="price">— <small>/ месяц</small></div>
+      <p>Доступ на один месяц после запуска сервиса.</p>
+      <button class="btn secondary" data-plan="Monthly">Выбрать</button>
     </div>
-
-    <div class="feature">
-      <b>🤖 Android</b>
-      <p>Интерфейс для Android</p>
+    <div class="price-card featured">
+      <h3>Quarterly</h3>
+      <div class="price">— <small>/ 3 месяца</small></div>
+      <p>План на три месяца. Цена пока не установлена.</p>
+      <button class="btn primary" data-plan="Quarterly">Выбрать</button>
     </div>
-
-    <div class="feature">
-      <b>🌍 8 стран</b>
-      <p>Выбор желаемой локации</p>
-    </div>
-
-    <div class="feature">
-      <b>🔐 Приватность</b>
-      <p>Цель проекта — безопасное соединение</p>
+    <div class="price-card">
+      <h3>Yearly</h3>
+      <div class="price">— <small>/ год</small></div>
+      <p>План на год после запуска сервиса.</p>
+      <button class="btn secondary" data-plan="Yearly">Выбрать</button>
     </div>
   </div>
-</main>
+  <p class="info">
+    Покупки отключены: оплата и выдача настоящих кодов
+    ещё не настроены.
+  </p>
+</section>
 
 <footer>
-  NovaTunnel © 2026
+  <b>NovaTunnel</b><br>
+  Независимый проект · 2026<br>
+  Интерфейс сайта не означает, что VPN-сервер доступен.
 </footer>
 
 <script>
-const activateButton = document.getElementById("activate");
-const country = document.getElementById("country");
-const code = document.getElementById("code");
-const status = document.getElementById("status");
+const countries = document.querySelectorAll(".country");
+const chosen = document.getElementById("chosen");
+const message = document.getElementById("message");
 
-activateButton.addEventListener("click", function () {
-  if (!code.value.trim()) {
-    status.textContent = "Введи код подписки.";
+countries.forEach(button => {
+  button.addEventListener("click", () => {
+    countries.forEach(item => {
+      item.classList.remove("active");
+      item.querySelector(".country-state").textContent = "Выбрать";
+    });
+
+    button.classList.add("active");
+    button.querySelector(".country-state").textContent = "Выбрана локация";
+    chosen.value = button.dataset.name;
+  });
+});
+
+document.getElementById("activate").addEventListener("click", () => {
+  const code = document.getElementById("code").value.trim();
+  const device = document.getElementById("device").value;
+
+  message.style.display = "block";
+
+  if (!code) {
+    message.textContent = "Сначала введи код подписки.";
     return;
   }
 
-  status.textContent =
-    "Демо: код введён. Сервер " +
-    country.options[country.selectedIndex].text +
-    " пока не настроен.";
+  message.textContent =
+    "Демо-режим: код введён, но настоящая проверка подписки ещё не настроена. " +
+    "Выбрано: " + chosen.value + ". Устройство: " + device + ".";
+});
+
+document.querySelectorAll("[data-plan]").forEach(button => {
+  button.addEventListener("click", () => {
+    message.style.display = "block";
+    message.textContent =
+      "Тариф " + button.dataset.plan +
+      " пока демонстрационный. Оплата ещё не подключена.";
+    document.getElementById("servers").scrollIntoView();
+  });
 });
 </script>
 
 </body>
 </html>
-
